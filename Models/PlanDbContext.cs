@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PlanAPI.Models.Enumeradores;
 
 namespace PlanAPI.Models
 {
@@ -14,10 +15,18 @@ namespace PlanAPI.Models
         {
             modelBuilder.Entity<Usuario>()
                 .HasAlternateKey(c => c.Email);
+
+            modelBuilder.Entity<Task>()
+                .HasOne(t => t.UsuarioOrigem)
+                .WithMany(u => u.TasksCriadas);
             
-            modelBuilder.Entity<Usuario>()
-                .Property(b => b.DataCriacaoConta)
-                .HasDefaultValueSql("CURRENT_DATE");
+            modelBuilder.Entity<Task>()
+                .HasOne(t => t.UsuarioAssociado)
+                .WithMany(u => u.TasksAssociadas);
+
+            modelBuilder.Entity<Task>()
+                .Property(task => task.Status)
+                .HasDefaultValue(EStatusTask.Pendente);
         }
     }
 }

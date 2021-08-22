@@ -22,8 +22,10 @@ namespace PlanAPI.Models
         [MaxLength(160, ErrorMessage = "O número máximo de caracteres foi inserido")]
         public string Senha { get; set; }
         
-        public DateTime DataCriacaoConta => default;
+        public DateTime DataCriacaoConta { get; set; }
         
-        public List<Task> Tasks { get; set; }
+        public List<Task> TasksCriadas { get; set; }
+        
+        public List<Task> TasksAssociadas { get; set; }
     }
 }
