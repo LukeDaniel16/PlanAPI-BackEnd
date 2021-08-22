@@ -1,7 +1,4 @@
 ﻿namespace PlanAPI.Models
 {
-    public class Index
-    {
-        
-    }
+    public class Index { }
 }

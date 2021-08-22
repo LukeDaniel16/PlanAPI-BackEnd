@@ -2,11 +2,22 @@
 
 namespace PlanAPI.Models
 {
-    public class PlanContext : DbContext
+    public class PlanDbContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseNpgsql("Server=PlanServer;Host=localhost;Port=5433;Database=PlanDB;Username=planuser;Password=user123");
+        public PlanDbContext(DbContextOptions<PlanDbContext> options) : base(options){}
         
         public DbSet<Usuario> Usuarios { get; set; }
+        
+        public DbSet<Task> Tasks { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Usuario>()
+                .HasAlternateKey(c => c.Email);
+            
+            modelBuilder.Entity<Usuario>()
+                .Property(b => b.DataCriacaoConta)
+                .HasDefaultValueSql("CURRENT_DATE");
+        }
     }
 }
