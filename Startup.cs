@@ -41,7 +41,8 @@ namespace PlanAPI
             }
             
             app.UseHttpsRedirection();
-    
+            app.UseAuthentication();
+            
             app.UseRouting();
             app.UseCors("PoliticaPadrao");
             app.UseEndpoints(endpoints =>

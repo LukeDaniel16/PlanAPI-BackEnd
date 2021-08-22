@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using PlanAPI.Models;
 
@@ -28,11 +27,12 @@ namespace PlanAPI.Controllers
         public IActionResult Post([FromBody] Usuario usuario)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
+            usuario.DataCriacaoConta = DateTime.Now;
             
             _context.Add(usuario);
             _context.SaveChanges();
-
-            return Ok("Usuário cadastrado com sucesso!");
+            
+            return Ok(usuario.Id);
         }
         
         [HttpPost]
@@ -42,20 +42,20 @@ namespace PlanAPI.Controllers
             try
             {
                 var usuarioObtido = _context.Usuarios
-                    .Single(u => Equals(usuario.Email, u.Email)
-                                 && Equals(usuario.Senha, u.Senha));
+                    .FirstOrDefault(u => Equals(u.Email, usuario.Email) 
+                                         && Equals(u.Senha, usuario.Senha));
 
-                if (usuarioObtido != null)
+                if (usuarioObtido == null)
                 {
-                    
+                    return NotFound("Usuário não encontrado");
                 }
+                
+                return Ok(usuario.Id);
             }
             catch (Exception e)
             {
-                return Forbid("Esse usuário está incorreto");
+                return NoContent();
             }
-
-            return Ok("Login realizado com sucesso");
         }
     }
 }
