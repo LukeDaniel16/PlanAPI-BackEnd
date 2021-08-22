@@ -14,6 +14,9 @@
     * ASP.NET Core     
     * ASP.NET WebAPI
 
+### Esse repositório serve somente de referência para o FrontEnd do mesmo projeto, não está utilizável para qualquer usuário, foram retiradas as configurações de 
+token para facilitar o desenvolvimento do projeto.
+ 
 ## Como rodar o projeto - Após clonar:
 
 -> Run PlanAPI na IDE do Rider. 
@@ -21,6 +24,7 @@
 
 Ps:
 É necessário ter uma cópia do SQL original do projeto para utilizar todos os recursos aqui implementados. 
+Este SQL de backup não é público e foi utilizado somente para fins de teste pela nossa equipe.
 Os arquivos de configuração com o banco de dados podem e, geralmente, devem ser alterados no arquivo launchSettings.json, originalmente está
 configurado somente para a minha máquina local.
 
