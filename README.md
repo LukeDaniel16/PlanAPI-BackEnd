@@ -14,8 +14,7 @@
     * ASP.NET Core     
     * ASP.NET WebAPI
 
-### Esse repositório serve somente de referência para o FrontEnd do mesmo projeto, não está utilizável para qualquer usuário, foram retiradas as configurações de 
-token para facilitar o desenvolvimento do projeto.
+#### Esse repositório serve somente de referência para o FrontEnd do mesmo projeto, não está utilizável para qualquer usuário, foram retiradas as configurações de token para facilitar o desenvolvimento do projeto.
  
 ## Como rodar o projeto - Após clonar:
 
