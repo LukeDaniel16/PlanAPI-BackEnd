@@ -17,6 +17,8 @@
 ## Como rodar o projeto - Após clonar:
 
 -> Run PlanAPI na IDE do Rider. 
+
+
 Ps:
 É necessário ter uma cópia do SQL original do projeto para utilizar todos os recursos aqui implementados. 
 Os arquivos de configuração com o banco de dados podem e, geralmente, devem ser alterados no arquivo launchSettings.json, originalmente está
