@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,13 @@ namespace PlanAPI
                 builder.AllowAnyMethod();
                 builder.AllowAnyHeader();
             }));
+            
+            services.AddControllers().AddJsonOptions(options =>
+                        {
+                            options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                            options.JsonSerializerOptions.IgnoreNullValues = true;
+                        });
+            
             services.AddMvc();
             services.AddDbContext<PlanDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("PlanDb")));

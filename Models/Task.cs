@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using PlanAPI.Models.Enumeradores;
 
 namespace PlanAPI.Models
@@ -11,7 +10,7 @@ namespace PlanAPI.Models
         public string Nome { get; set; }
         
         public EStatusTask Status { get; set; }
-        
+
         public DateTime PrazoConclusao { get; set; }
         
         public string Descricao { get; set; }

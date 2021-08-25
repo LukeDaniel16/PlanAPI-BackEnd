@@ -27,8 +27,7 @@ namespace PlanAPI.Controllers
         public IActionResult Post([FromBody] Usuario usuario)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            usuario.DataCriacaoConta = DateTime.Now;
-            
+
             _context.Add(usuario);
             _context.SaveChanges();
             
@@ -50,7 +49,7 @@ namespace PlanAPI.Controllers
                     return NotFound("Usuário não encontrado");
                 }
                 
-                return Ok(usuario.Id);
+                return Ok(usuarioObtido.Id);
             }
             catch (Exception e)
             {
