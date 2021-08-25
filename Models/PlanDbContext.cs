@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using PlanAPI.Models.Enumeradores;
 
 namespace PlanAPI.Models
@@ -13,9 +14,6 @@ namespace PlanAPI.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Usuario>()
-                .HasAlternateKey(c => c.Email);
-
             modelBuilder.Entity<Task>()
                 .HasOne(t => t.UsuarioOrigem)
                 .WithMany(u => u.TasksCriadas);
@@ -24,6 +22,11 @@ namespace PlanAPI.Models
                 .HasOne(t => t.UsuarioAssociado)
                 .WithMany(u => u.TasksAssociadas);
 
+            modelBuilder.Entity<Task>()
+                .Property(task => task.Status)
+                .HasConversion(status => status.ToString(),
+                    status => (EStatusTask)Enum.Parse(typeof(EStatusTask), status));
+            
             modelBuilder.Entity<Task>()
                 .Property(task => task.Status)
                 .HasDefaultValue(EStatusTask.Pendente);

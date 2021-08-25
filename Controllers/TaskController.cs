@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using PlanAPI.Models;
 using PlanAPI.Models.Enumeradores;
@@ -48,6 +49,53 @@ namespace PlanAPI.Controllers
             _context.SaveChanges();
 
             return Ok("Task cadastrada com sucesso");
+        }
+
+        [Route("buscarTasks/{Id}/{paraMim}")]
+        [HttpPost]
+        public IActionResult BuscarTask(long Id, bool paraMim)
+        {
+            List<Task> tasksObtidas;
+            
+            tasksObtidas = paraMim 
+                ? _context.Tasks.Where(t => t.UsuarioAssociadoId == Id).ToList() 
+                : _context.Tasks.Where(t => t.UsuarioOrigemId == Id).ToList();
+            
+            return Ok(tasksObtidas);
+        }
+
+        [Route("concluirTask/{Id}")]
+        [HttpPut]
+        public IActionResult ConcluirTask(long Id, [FromBody] Task task)
+        {
+            var taskObtida = _context.Tasks.FirstOrDefault(t => t.Id == Id);
+
+            if (taskObtida == null)
+            {
+                return NotFound();
+            }
+            
+            taskObtida.Status = EStatusTask.Concluido;
+            taskObtida.DescricaoConclusao = task.DescricaoConclusao;
+            _context.SaveChanges();
+            return Ok("Tarefa concluída com sucesso!");
+        }
+
+        [Route("cancelarTask/{Id}")]
+        [HttpPut]
+        public IActionResult CancelarTask(long Id, [FromBody] Task task)
+        {
+            var taskObtida = _context.Tasks.FirstOrDefault(t => t.Id == Id);
+
+            if (taskObtida == null)
+            {
+                return NotFound();
+            }
+            
+            taskObtida.Status = EStatusTask.Cancelado;
+            taskObtida.DescricaoCancelamento = task.DescricaoCancelamento;
+            _context.SaveChanges();
+            return Ok("Tarefa cancelada com sucesso!");
         }
     }
 }
