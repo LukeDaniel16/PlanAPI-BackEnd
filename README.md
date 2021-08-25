@@ -27,7 +27,7 @@ Este SQL de backup não é público e foi utilizado somente para fins de teste p
 Os arquivos de configuração com o banco de dados podem e, geralmente, devem ser alterados no arquivo launchSettings.json, originalmente está
 configurado somente para a minha máquina local.
 
-  ### Funcionalidades criadas e pendentes:
+  ### Funcionalidades implementadas:
   
 - [x] Tela de erro padrão (ao entrar em página inexistente, etc). 
 - [x] Cadastro de usuário
@@ -35,9 +35,8 @@ configurado somente para a minha máquina local.
 - [x] Criação de nota individual
 - [x] Cadastro de projeto
   
-  
 <h4 align="center"> 
   Status do projeto:<br> :computer: Plan! :white_check_mark: - Concluído para apresentação em 24/08/2021! :computer:
 </h4>
-
+Para detalhes visuais, visitar o repositório de [FrontEnd](https://github.com/LukeDaniel16/PlanAPI-FrontEnd) da aplicação.
 Para maiores detalhes, visite a documentação oficial do Asp.net Core WebAPI [ASP.NET Core WebAPI](https://docs.microsoft.com/pt-br/aspnet/core/tutorials/first-web-api?view=aspnetcore-5.0&tabs=visual-studio).
