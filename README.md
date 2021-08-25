@@ -39,6 +39,6 @@ configurado somente para a minha máquina local.
   Status do projeto:<br> :computer: Plan! :white_check_mark: - Concluído para apresentação em 24/08/2021! :computer:
 </h4>
 
-Para maiores detalhes, visite a documentação oficial do Asp.net Core WebAPI [ASP.NET Core WebAPI](https://docs.microsoft.com/pt-br/aspnet/core/tutorials/first-web-api?view=aspnetcore-5.0&tabs=visual-studio).
+Para maiores detalhes, visite a documentação oficial do [ASP.NET Core WebAPI](https://docs.microsoft.com/pt-br/aspnet/core/tutorials/first-web-api?view=aspnetcore-5.0&tabs=visual-studio).
 
 Para detalhes visuais, visitar o repositório de [FrontEnd](https://github.com/LukeDaniel16/PlanAPI-FrontEnd) da aplicação.
